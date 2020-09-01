@@ -71,7 +71,7 @@ header {
     max-width: 800px;
     min-height: 400px;
 
-    margin: 46px auto 0 auto;
+    margin: 46px auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
 
@@ -116,6 +116,7 @@ header {
 .details .item div:nth-child(2) {
     color: #555;
     font-weight: bold;
+    font-size: 18px;
 }
 
 .details h3 {
@@ -136,4 +137,35 @@ header {
     margin-top: 8px;
     padding: 8px 16px;
     border-radius: 16px;
+}
+
+/*** FORM ***/
+input {
+    width: 100%;
+    outline: none;
+    color: #555;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+input::placeholder {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+input[type="radio"] {
+    width: initial;
+    margin-right: 4px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    background-color: var(--primary-color);
+    padding: 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    margin-top: 32px;
+    font-size: 16px;
 }

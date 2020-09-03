@@ -49,11 +49,11 @@ exports.post = function(req, res) {
     fs.writeFile("data.json", JSON.stringify(data, null, 2), (err) => {
         if(err) return res.send('Write file error!')
 
-        return res.redirect('/instructors')
+        return res.redirect(`/instructors/${id}`)
     })
 }
 
-exports.edit = function(req, res){
+exports.edit = function(req, res) {
     const { id } = req.params
 
     const foundInstructor = data.instructors.find((instructor) => {
@@ -72,7 +72,7 @@ exports.edit = function(req, res){
     return res.render('instructors/edit', { instructor })
 }
 
-exports.put = function(req, res){
+exports.put = function(req, res) {
     const { id } = req.body
     let index = 0
 
@@ -99,5 +99,21 @@ exports.put = function(req, res){
         if(err) return res.send('Write error!')
 
         return res.redirect(`/instructors/${id}`)
+    })
+}
+
+exports.delete = function(req, res) {
+    const { id } = req.body
+
+    const filteredInstructor = data.instructors.filter((instructor) => {
+        return instructor.id != id
+    })
+
+    data.instructors = filteredInstructor
+
+    fs.writeFile('data.json', JSON.stringify(data, null, 2), function(err){
+        if(err) return res.send('Write error!')
+
+        return res.redirect('instructors')
     })
 }

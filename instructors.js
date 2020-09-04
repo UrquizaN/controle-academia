@@ -2,34 +2,24 @@ const fs = require('fs')
 const data = require('./data.json')
 const { age, date } = require('./utils')
 
+exports.index = (req, res) => {
+    return res.render('instructors/index', { instructors: data.instructors })
+}
+
 exports.show = function(req, res) {
-<<<<<<< HEAD
-    const id = req.params.id
-=======
     const { id } = req.params
->>>>>>> b59d4d5f13d8962f2ccb8a53b8e9cfb829ef3ecd
 
     const foundInstructor = data.instructors.find((instructor) => {
         return instructor.id == id
     })
 
-<<<<<<< HEAD
     if(!foundInstructor) return res.send('Instructor not found!')
-=======
-    if(!foundInstructor) {
-        return res.send('Instructor not found!')
-    }
->>>>>>> b59d4d5f13d8962f2ccb8a53b8e9cfb829ef3ecd
 
     const instructor = {
         ...foundInstructor,
         age: age(foundInstructor.birth),
         services: foundInstructor.services.split(','),
-<<<<<<< HEAD
-        created_at: new Intl.DateTimeFormat('pt-BR').format(foundInstructor.created_at),
-=======
         created_at: new Intl.DateTimeFormat("en-GB").format(foundInstructor.created_at)
->>>>>>> b59d4d5f13d8962f2ccb8a53b8e9cfb829ef3ecd
     }
 
     return res.render('instructors/show', { instructor })
@@ -76,7 +66,8 @@ exports.edit = function(req, res) {
 
     const instructor = {
         ...foundInstructor,
-        birth: date(foundInstructor.birth)
+        birth: date(foundInstructor.birth),
+        id: Number(req.body.id)
     }
 
     return res.render('instructors/edit', { instructor })

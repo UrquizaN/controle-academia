@@ -66,8 +66,8 @@ exports.edit = function(req, res) {
 
     const instructor = {
         ...foundInstructor,
+        id: Number(req.body.id),
         birth: date(foundInstructor.birth),
-        id: Number(req.body.id)
     }
 
     return res.render('instructors/edit', { instructor })

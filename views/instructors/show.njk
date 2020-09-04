@@ -19,7 +19,9 @@
 
         <div class="item">
             <div>Sexo</div>
-            <div>{{ "Masculino" if instructor.gender == "M" else "Feminino" }}</div>
+            <div>
+                {{ "Masculino" if instructor.gender == 'M' else "Feminino" }}
+            </div>
         </div>
         
         <div class="item">

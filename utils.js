@@ -3,10 +3,10 @@ module.exports = {
         const today = new Date()
         const birthDate = new Date(timestamp)
 
-        let age = today.getFullYear() - birthDate.getFullYear(timestamp)
-        const month = today.getMonth() - birthDate.getMonth(timestamp)
+        let age = today.getFullYear() - birthDate.getUTCFullYear()
+        const month = today.getMonth() - birthDate.getUTCMonth()
 
-        if(month < 0 || month == 0 && today.getDate() < birthDate.getDate())
+        if(month < 0 || month == 0 && today.getDate() <= birthDate.getDate())
             age -= 1
         
         return age

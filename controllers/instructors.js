@@ -1,6 +1,6 @@
 const fs = require('fs')
-const data = require('./data.json')
-const { age, date } = require('./utils')
+const data = require('../data.json')
+const { age, date } = require('../utils')
 
 exports.index = (req, res) => {
     return res.render('instructors/index', { instructors: data.instructors })
@@ -23,6 +23,10 @@ exports.show = function(req, res) {
     }
 
     return res.render('instructors/show', { instructor })
+}
+
+exports.create = function(req, res) {
+    return res.render('instructors/create')
 }
 
 exports.post = function(req, res) {
@@ -62,11 +66,12 @@ exports.edit = function(req, res) {
         return instructor.id == id
     })
 
+    console.log(foundInstructor.id)
+
     if(!foundInstructor) return res.send('Instructor not found!')
 
     const instructor = {
         ...foundInstructor,
-        id: Number(req.body.id),
         birth: date(foundInstructor.birth),
     }
 
@@ -77,12 +82,16 @@ exports.put = function(req, res) {
     const { id } = req.body
     let index = 0
 
+    console.log(id)
+    console.log(index)
     const foundInstructor = data.instructors.find((instructor, foundIndex) => {
         if(instructor.id == id){
             index = foundIndex
             return true
         }
     })
+
+    console.log(foundInstructor)
 
     if(!foundInstructor) {
         return res.send('Instructor not found!')
@@ -91,6 +100,7 @@ exports.put = function(req, res) {
     const instructor = {
         ...foundInstructor,
         ...req.body,
+        id: Number(req.body.id),
         birth: Date.parse(req.body.birth)
     }
 

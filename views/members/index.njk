@@ -8,21 +8,24 @@
         <thead>
             <tr>
                 <th>Alunos</th>
-                <th>Acompanhamento</th>
+                <th>E-mail</th>
+                <th>Altura</th>
+                <th>Peso</th>
                 <th>Opção</th>
             </tr>
         </thead>
         <tbody>
             {% for member in members %}
                 <tr>
-                    
                     <td>
                         <span 
                             style="background-image: url({{ member.avatar_url }})"
                         >
                         </span>
                         {{ member.name }}</td>
-                    <td><div>{{ member.services }}</div></td>
+                    <td><div>{{ member.email }}</div></td>
+                    <td><div>{{ member.height }}cm</div></td>
+                    <td><div>{{ member.weight }}kg</div></td>
                     <td>
                         <a href="/members/{{ member.id }}">Visualizar</a>
                     </td>

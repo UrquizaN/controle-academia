@@ -9,17 +9,17 @@
     >
     </section>
     <section class="details">
-        <form method="POST" action="/instructors?_method=PUT">
-                <h3>Editar Instrutor</h3>
+        <form method="POST" action="/members?_method=PUT">
+                <h3>Editar Member</h3>
 
-                {% include 'instructors/form.njk' %}
+                {% include 'members/form.njk' %}
                 
-                <input type="hidden" name="id" value="{{ instructor.id }}">
+                <input type="hidden" name="id" value="{{ member.id }}">
         </form>
 
-        <form id="form-delete" action="/instructors?_method=DELETE" method="POST">
+        <form id="form-delete" action="/members?_method=DELETE" method="POST">
             <button type="submit">Deletar</button>
-            <input type="hidden" name="id" value="{{ instructor.id }}">
+            <input type="hidden" name="id" value="{{ member.id }}">
         </form>
     </section>
 </div>

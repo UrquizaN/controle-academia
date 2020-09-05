@@ -29,13 +29,13 @@
                     type="email" 
                     placeholder="usuario@exemplo.com"
                     name="email"
-                    value="{{ member.name }}"
+                    value="{{ member.email }}"
                 >
             </div>
         </div>
 
         <div class="item">
-            <div>Idade</div>
+            <div>Data de Nascimento</div>
             <div>
                 <input 
                     type="date" 
@@ -76,9 +76,9 @@
             <div>
                 <input 
                     type="number" 
-                    name="hight"
+                    name="height"
                     placeholder="Digite o sua altura"
-                    value="{{ member.hight }}"
+                    value="{{ member.height }}"
                 >
             </div>
         </div>
@@ -99,50 +99,50 @@
             <div>Tipo sanguíneo</div>
             <div>
                 <select name="blood" >
-                    <option value="A1" 
-                        {% if member.blood == "A1"  %} 
+                    <option value="A+" 
+                        {% if member.blood == "A+"  %} 
                             selected 
                         {% endif %}
                         >A+
                     </option>
-                    <option value="A0" 
-                        {% if member.blood == "A0" %} 
+                    <option value="A-" 
+                        {% if member.blood == "A-" %} 
                             selected 
                         {% endif %}
                         >A-
                     </option>
-                    <option value="B1" 
-                        {% if member.blood == "B1"  %} 
+                    <option value="B+" 
+                        {% if member.blood == "B+"  %} 
                             selected 
                         {% endif %}
                         >B+
                     </option>
-                    <option value="B0" 
-                        {% if member.blood == "B0" %} 
+                    <option value="B-" 
+                        {% if member.blood == "B-" %} 
                             selected 
                         {% endif %}
                         >B-
                     </option>
-                    <option value="AB1"
-                        {% if member.blood == "AB1" %} 
+                    <option value="AB+"
+                        {% if member.blood == "AB+" %} 
                             selected 
                         {% endif %}
                         >AB+
                     </option>
-                    <option value="AB0"
-                        {% if member.blood == "AB0" %} 
+                    <option value="AB-"
+                        {% if member.blood == "AB-" %} 
                             selected 
                         {% endif %}
                         >AB-
                     </option>
-                    <option value="O1" 
-                        {% if member.blood == "O1" %} 
+                    <option value="O+" 
+                        {% if member.blood == "O+" %} 
                             selected 
                         {% endif %}
                         >O+
                     </option>
-                    <option value="O0" 
-                        {% if member.blood == "O0"  %} 
+                    <option value="O-" 
+                        {% if member.blood == "O-"  %} 
                             selected 
                         {% endif %}
                         >O-

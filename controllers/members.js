@@ -18,6 +18,7 @@ exports.show = function(req, res) {
     const member = {
         ...foundMember,
         age: age(foundMember.birth),
+        birth: date(foundMember.birth).birthdate
     }
 
     return res.render('members/show', { member })
@@ -67,8 +68,7 @@ exports.edit = function(req, res) {
 
     const member = {
         ...foundMember,
-        id: Number(req.body.id),
-        birth: date(foundMember.birth),
+        birth: date(foundMember.birth).iso,
     }
 
     return res.render('members/edit', { member })
@@ -92,6 +92,7 @@ exports.put = function(req, res) {
     const member = {
         ...foundMember,
         ...req.body,
+        id: Number(req.body.id),
         birth: Date.parse(req.body.birth)
     }
 

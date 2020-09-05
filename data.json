@@ -7,9 +7,9 @@
       "email": "teste@outlook.com",
       "birth": 834969600000,
       "gender": "M",
-      "hight": "165",
+      "height": "165",
       "weight": "55",
-      "blood": "O1"
+      "blood": "O+"
     },
     {
       "id": 2,
@@ -18,9 +18,9 @@
       "email": "teste2@outlook.com",
       "birth": 1024963200000,
       "gender": "F",
-      "hight": "172",
+      "height": "172",
       "weight": "62",
-      "blood": "A1"
+      "blood": "A+"
     }
   ],
   "instructors": [

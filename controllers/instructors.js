@@ -72,7 +72,7 @@ exports.edit = function(req, res) {
 
     const instructor = {
         ...foundInstructor,
-        birth: date(foundInstructor.birth),
+        birth: date(foundInstructor.birth).iso,
     }
 
     return res.render('instructors/edit', { instructor })
@@ -90,8 +90,6 @@ exports.put = function(req, res) {
             return true
         }
     })
-
-    console.log(foundInstructor)
 
     if(!foundInstructor) {
         return res.send('Instructor not found!')

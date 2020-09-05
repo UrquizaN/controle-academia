@@ -5,3 +5,11 @@ for(item of menuItems){
     if(currentPage.includes(item.getAttribute('href')))
     item.classList.add('active')
 }
+
+const formDelete = document.querySelector('#form-delete')
+
+formDelete.addEventListener("submit", function(envent){
+    const confirmation = confirm("Deseja realmente deletar?")
+
+    if(!confirmation) event.preventDefault()
+})

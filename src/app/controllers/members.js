@@ -1,120 +1,52 @@
 const { age, date } = require('../../lib/utils')
+const Member = require('../models/Member')
 
-exports.index = (req, res) => {
-    return res.render('members/index', { members: data.members })
-}
+module.exports = {
+    index(req, res) {
+        Member.all((members) => {
+            return res.render('members/index', { members })
+        })
+    },
+    show(req, res){
+        Member.find(req.params.id, function(member){
+            if(!member) return res.send('Member Not Found!')
 
-exports.show = function(req, res) {
-    const { id } = req.params
+            member.age = age(member.birth)
+            member.birth = date(member.birth).birthdate
+            
+            return res.render('members/show', { member })
+        })
+    },
 
-    const foundMember = data.members.find((member) => {
-        return member.id == id
-    })
+    create(req, res) {
+        return res.render('members/create')
+    },
 
-    if(!foundMember) return res.send('Member not found!')
+    post(req, res) {
+        Member.create(req.body, function(member) {
+            return res.redirect(`/members/${member.id}`)
+        })
+    },
 
-    const member = {
-        ...foundMember,
-        age: age(foundMember.birth),
-        birth: date(foundMember.birth).birthdate
+    edit(req, res) {
+        Member.find(req.params.id, function(member){
+            if(!member) return res.send('Member Not Found!')
+
+            member.birth = date(member.birth).iso
+            
+            return res.render('members/edit', { member })
+        })
+    },
+
+    put(req, res) {
+       Member.update(req.body, function(){
+           return res.redirect(`/members/${req.body.id}`)
+       })
+    },
+
+    delete(req, res) {
+        Member.delete(req.body.id, function(){
+            return res.redirect(`/members`)
+        })
     }
-
-    return res.render('members/show', { member })
-}
-
-exports.create = function(req, res) {
-    return res.render('members/create')
-}
-
-exports.post = function(req, res) {
-    const keys = Object.keys(req.body)
-
-    for(key of keys) {
-        if(req.body[key] == "") return res.send('Please, fill all fields!')
-    }
-
-    let id = 1
-    let lastMember = data.members[data.members.length - 1]
-
-    if(lastMember){
-        id = lastMember.id + 1
-    }
-
-    birth = Date.parse(req.body.birth)
-
-    data.members.push({
-        id,
-        ...req.body,
-        birth
-    })
-
-    fs.writeFile("data.json", JSON.stringify(data, null, 2), (err) => {
-        if(err) return res.send('Write file error!')
-
-        return res.redirect(`/members/${id}`)
-    })
-}
-
-exports.edit = function(req, res) {
-    const { id } = req.params
-
-    const foundMember = data.members.find((member) => {
-        return member.id == id
-    })
-
-    if(!foundMember) return res.send('Member not found!')
-
-    const member = {
-        ...foundMember,
-        birth: date(foundMember.birth).iso,
-    }
-
-    return res.render('members/edit', { member })
-}
-
-exports.put = function(req, res) {
-    const { id } = req.body
-    let index = 0
-
-    const foundMember = data.members.find((member, foundIndex) => {
-        if(member.id == id){
-            index = foundIndex
-            return true
-        }
-    })
-
-    if(!foundMember) {
-        return res.send('Member not found!')
-    }
-
-    const member = {
-        ...foundMember,
-        ...req.body,
-        id: Number(req.body.id),
-        birth: Date.parse(req.body.birth)
-    }
-
-    data.members[index] = member
-
-    fs.writeFile('data.json', JSON.stringify(data, null, 2), function(err){
-        if(err) return res.send('Write error!')
-
-        return res.redirect(`/members/${id}`)
-    })
-}
-
-exports.delete = function(req, res) {
-    const { id } = req.body
-
-    const filteredMember = data.members.filter((member) => {
-        return member.id != id
-    })
-
-    data.members = filteredMember
-
-    fs.writeFile('data.json', JSON.stringify(data, null, 2), function(err){
-        if(err) return res.send('Write error!')
-
-        return res.redirect('members')
-    })
 }

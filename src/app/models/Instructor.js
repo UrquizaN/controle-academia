@@ -4,7 +4,11 @@ const db = require('../../database/db')
 module.exports = {
     all(callback){
         const query = `
-            SELECT * FROM instructors
+            SELECT instructors.*, count(members) AS total_members
+            FROM instructors
+            LEFT JOIN members ON (instructors.id = members.instructor_id)
+            GROUP BY instructors.id
+            ORDER BY total_members DESC
         `
         db.query(query, function(error, results){
             if(error) throw `Database Error! ${error}`

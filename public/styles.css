@@ -141,7 +141,8 @@ tbody tr td:nth-child(2) div {
 }
 
 /*** FORM ***/
-input {
+input,
+select {
     width: 100%;
     outline: none;
     color: #555;

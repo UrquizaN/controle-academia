@@ -3,9 +3,17 @@ const Instructor = require('../models/Instructor')
 
 module.exports = {
     index(req, res) {
-        Instructor.all((instructors) => {
-            return res.render('instructors/index', { instructors })
-        })
+        const { filter } = req.query
+
+        if(filter){
+            Instructor.findBy(filter, function(instructors){
+                return res.render('instructors/index', { instructors, filter })
+            })
+        } else{
+            Instructor.all((instructors) => {
+                return res.render('instructors/index', { instructors })
+            })
+        }
     },
     show(req, res){
         Instructor.find(req.params.id, function(instructor){

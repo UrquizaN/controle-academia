@@ -248,3 +248,30 @@ tbody tr td:last-child a,
 tr td:last-child  {
     text-align: center;
 }
+
+.table-container .header {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.table-container .header a,
+.table-container .header button{
+    margin: 0;
+    width: 120px;
+}
+
+.table-container .header form {
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    align-items: center;
+    column-gap: 8px;
+}
+
+.table-container .header form input {
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 6px 8px;
+}

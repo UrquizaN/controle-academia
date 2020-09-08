@@ -15,7 +15,11 @@ module.exports = {
             limit,
             offset,
             callback(instructors){
-                return res.render('instructors/index', { instructors, filter })
+                const paginate = {
+                    page,
+                    total: Math.ceil(instructors[0].total / 2)
+                }
+                return res.render('instructors/index', { instructors, filter, paginate })
             }
         }
 

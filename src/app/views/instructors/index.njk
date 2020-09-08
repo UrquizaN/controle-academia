@@ -45,6 +45,13 @@
             
         </tbody>
     </table>
+
+    <div class="pagination"
+        data-page={{ paginate.page }}
+        data-total = {{ paginate.total }}
+        data-filter = {{ filter }}
+    >
+    </div>
 </div>
 
 {% endblock content %}

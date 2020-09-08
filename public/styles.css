@@ -275,3 +275,31 @@ tr td:last-child  {
     border-radius: 4px;
     padding: 6px 8px;
 }
+
+.table-container {
+    display: grid;
+    grid-template: 64px 1fr 16px / 1fr;
+}
+
+.table-container .header{
+    margin: 0;
+    align-self: start;
+}
+
+.table-container .pagination {
+    align-self: end;
+    justify-self: center;
+}
+
+.pagination a,
+.pagination span {
+    margin-right: 4px;
+    padding: 8px;
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.pagination a:hover {
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+}

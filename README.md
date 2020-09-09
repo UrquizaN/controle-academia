@@ -64,6 +64,7 @@ $ cd controle-academia
 # Acesse a pasta src/database
 ### Editar o db.js com as configurações do seu banco de dados
 ```
+```bash
 # Instale as dependências
 $ npm install
 ou
@@ -75,7 +76,7 @@ ou
 $ yarn start
 
 # O servidor inciará na porta:5000 - acesse <http://localhost:5000>
-
+```
 <p  align="center">Projeto <strong>Gym Manager</strong> foi desenvolvido durante o Launchbase da <a  href="https://rocketseat.com.br">Rocketseat</a>. Ministrado por <a href="https://github.com/maykbrito"> Myke Brito </a></p>
 
 <h3 align="center">
